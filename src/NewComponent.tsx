@@ -1,55 +1,36 @@
-import React from "react";
+import React from 'react';
 
-type NewComponentPropsType = {
-  callBack: (buttonName: ValueButtonFromAppTypeProps) => void;
-  currentMoneyFromApp: ArrayMoney[];
-};
 
-type ValueButtonFromAppTypeProps = "all" | "ruble" | "dollar";
+export const NewComponent = () => {
 
-type ArrayMoney = {
-  banknots: string;
-  value: number;
-  number: string;
-};
+    const topCars = [
+        {manufacturer: 'BMW', model: 'm5cs'},
+        {manufacturer: 'Mercedes', model: 'e63s'},
+        {manufacturer: 'Audi', model: 'rs6'}
+    ]
 
-export const NewComponent = (props: NewComponentPropsType) => {
-  return (
-    <>
-      <ul>
-        {props.currentMoneyFromApp.map((objFromMoneyArr, index) => {
-          return (
-            <li key={index}>
-              <span>{objFromMoneyArr.banknots}</span>
-              <span>{objFromMoneyArr.value}</span>
-              <span>{objFromMoneyArr.number}</span>
-            </li>
-          );
-        })}
-      </ul>
-      <div style={{ marginLeft: "40px" }}>
-        <button
-          onClick={() => {
-            props.callBack("all");
-          }}
-        >
-          all
-        </button>
-        <button
-          onClick={() => {
-            props.callBack("ruble");
-          }}
-        >
-          ruble
-        </button>
-        <button
-          onClick={() => {
-            props.callBack("dollar");
-          }}
-        >
-          dollar
-        </button>
-      </div>
-    </>
-  );
-};
+
+    return (
+        <table>
+            <thead>
+            <tr>
+                <th colSpan={2}>Top cars</th>
+            </tr>
+            </thead>
+            <tbody>
+            {topCars.map((objectFromArray, index) => {
+                return (
+                    <tr key={index + 1}>
+                        <td>
+                            {objectFromArray.manufacturer}
+                        </td>
+                        <td>
+                            {objectFromArray.model}
+                        </td>
+                    </tr>
+                )
+            })}
+            </tbody>
+        </table>
+    )
+}
